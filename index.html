@@ -1,0 +1,166 @@
+import React, { useState } from "react";
+
+// 🌍 Simo Tomov Team – 3 Dilli Web Sitesi (TR / DE / PL)
+// Tek dosya React componenti – Tailwind CSS kullanır.
+
+export default function SimoTomovWebsite() {
+  const [lang, setLang] = useState("tr");
+
+  const text = {
+    tr: {
+      title: "Profesyonel Temizlik & Güvenilir Taşımacılık",
+      intro:
+        "Simo Tomov Team olarak Polonya ve Almanya'da profesyonel temizlik, baureinigung, umzug ve özel çatı bitüm kaplama hizmetleri sunuyoruz.",
+      services: "Hizmetlerimiz",
+      cities: "Hizmet Verilen Şehirler",
+      contact: "Ücretsiz keşif talep et",
+      address: "Adres",
+    },
+    de: {
+      title: "Professionelle Reinigung & Zuverlässige Umzüge",
+      intro:
+        "Simo Tomov Team bietet in Polen und Deutschland professionelle Reinigungsdienste, Baureinigung, Umzüge sowie Bitumenbeschichtung und Malerarbeiten an.",
+      services: "Unsere Dienstleistungen",
+      cities: "Unsere Einsatzorte",
+      contact: "Kostenlose Besichtigung anfragen",
+      address: "Adresse",
+    },
+    pl: {
+      title: "Profesjonalne Sprzątanie i Niezawodne Przeprowadzki",
+      intro:
+        "Simo Tomov Team oferuje profesjonalne usługi sprzątania, sprzątanie poremontowe, przeprowadzki oraz powłoki bitumiczne w Polsce i Niemczech.",
+      services: "Nasze Usługi",
+      cities: "Obsługiwane Miasta",
+      contact: "Umów bezpłatną wizytę",
+      address: "Adres",
+    },
+  };
+
+  const servicesList = [
+    "Reinigung",
+    "Grundreinigung",
+    "Baureinigung",
+    "Gebäudereinigung",
+    "Große Ladenreinigung",
+    "Umzüge",
+    "Lagerumzüge",
+    "Bauarbeiten",
+    "Bitumenbeschichtung (Dach)",
+    "Innen- & Außenanstrich",
+    "Büroreinigung",
+    "Kindergartenreinigung",
+    "Schulreinigung",
+  ];
+
+  const cities = [
+    "Poznan",
+    "Słubica",
+    "Frankfurt (Oder)",
+    "Bremen",
+    "Bremerhaven",
+    "Cuxhaven",
+    "Hamburg",
+    "Hannover",
+    "Köln",
+    "Berlin",
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-50 text-gray-800">
+      <header className="bg-white shadow-sm">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-lg bg-sky-600 flex items-center justify-center text-white font-bold">
+              ST
+            </div>
+            <div>
+              <h1 className="text-lg font-semibold">Simo Tomov Team</h1>
+              <p className="text-sm text-gray-500">
+                Cleaning, Moving & Construction Services
+              </p>
+            </div>
+          </div>
+
+          {/* Dil seçici */}
+          <div className="flex gap-2">
+            <button
+              onClick={() => setLang("tr")} className="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300"
+            >TR</button>
+            <button
+              onClick={() => setLang("de")} className="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300"
+            >DE</button>
+            <button
+              onClick={() => setLang("pl")} className="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300"
+            >PL</button>
+          </div>
+        </div>
+      </header>
+
+      <main className="max-w-6xl mx-auto px-6 py-12">
+        {/* Giriş bölümü */}
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 className="text-3xl font-extrabold leading-tight">{text[lang].title}</h2>
+            <p className="mt-4 text-gray-600">{text[lang].intro}</p>
+
+            <a
+              href="#contact"
+              className="inline-block mt-6 bg-sky-600 text-white px-5 py-3 rounded-lg font-medium"
+            >
+              {text[lang].contact}
+            </a>
+          </div>
+          <div>
+            <img
+              src="https://images.unsplash.com/photo-1581579188871-45ea61f2a0c8?auto=format&fit=crop&w=900&q=60"
+              alt="Cleaning Team"
+              className="rounded-xl shadow"
+            />
+          </div>
+        </section>
+
+        {/* Hizmetler */}
+        <section className="mt-16">
+          <h3 className="text-2xl font-bold mb-6">{text[lang].services}</h3>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {servicesList.map((srv) => (
+              <li key={srv} className="p-4 bg-white rounded shadow-sm">
+                {srv}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* Şehirler */}
+        <section className="mt-16">
+          <h3 className="text-2xl font-bold mb-6">{text[lang].cities}</h3>
+          <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+            {cities.map((city) => (
+              <li key={city} className="p-3 bg-white rounded shadow-sm text-center">
+                {city}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* İletişim */}
+        <section id="contact" className="mt-16 p-6 bg-white rounded-xl shadow-md">
+          <h3 className="text-xl font-bold mb-4">Kontakt / Contact</h3>
+          <p className="text-gray-700">
+            <strong>{text[lang].address}:</strong> Osiedle Wimar 14/2, 69-100 Słubice
+          </p>
+          <p className="mt-2 text-gray-700">
+            <strong>Telefon / WhatsApp:</strong>{" "}
+            <a href="tel:+4915772550829" className="text-sky-600 font-semibold">
+              +49 1577 2550829
+            </a>
+          </p>
+        </section>
+      </main>
+
+      <footer className="text-center py-6 text-gray-500 text-sm">
+        © 2025 Simo Tomov Team – All rights reserved.
+      </footer>
+    </div>
+  );
+}
